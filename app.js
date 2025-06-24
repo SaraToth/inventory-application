@@ -10,7 +10,10 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use("/", indexRouter);
 
-
+app.use("/", (err, req, res, next) => {
+    console.error(err);
+    res.status(500).send(err);
+});
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

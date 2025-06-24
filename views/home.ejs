@@ -7,5 +7,10 @@
 </head>
 <body>
     <h1>Inventory Home</h1>
+    <% if (books) { %>
+        <p>There are books in your database</p>
+    <%} else {%>
+        <p>There are no books. sad</p>
+    <%}%>
 </body>
 </html>
