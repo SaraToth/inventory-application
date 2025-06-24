@@ -14,4 +14,15 @@ const getAllBooks = asyncHandler(async (req, res) => {
     res.render("home", { books: books});
 });
 
-module.exports = { getAllBooks };
+const getAllBooksWithGenre = asyncHandler(async (req, res) => {
+    const books = await bookQueries.getBooksWithGenre();
+
+    if (!books) {
+        res.send("No books in stores");
+        return;
+    }
+
+    res.render("home", { books: books });
+})
+
+module.exports = { getAllBooks, getAllBooksWithGenre };
