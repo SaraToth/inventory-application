@@ -4,16 +4,6 @@ const branchQueries = require("../db/queries/branches");
 const inventoryQueries = require("../db/queries/inventory");
 const asyncHandler = require("express-async-handler");
 
-const getAllBooks = asyncHandler(async (req, res) => {
-    const books = await bookQueries.getAllBooks();
-    if (!books) {
-        res.send("No books in stores");
-        return;
-    }
-
-    res.render("home", { books: books});
-});
-
 const getAllBooksWithGenre = asyncHandler(async (req, res) => {
     const books = await bookQueries.getBooksWithGenre();
 
@@ -26,4 +16,4 @@ const getAllBooksWithGenre = asyncHandler(async (req, res) => {
 })
 
 
-module.exports = { getAllBooks, getAllBooksWithGenre };
+module.exports = { getAllBooksWithGenre };
