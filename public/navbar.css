@@ -60,6 +60,7 @@ nav a:hover {
     gap: 0; /* Overrides gap set on parent (nav ul) so no dropdown gaps */
 }
 
+/* Ensures "Display by:" blends with dropdown-content links */
 .drop-title {
     padding: var(--dropdown-padding);
     cursor: default;
