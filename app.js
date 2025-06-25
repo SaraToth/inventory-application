@@ -1,7 +1,6 @@
 const express = require("express");
 const app = express();
 const indexRouter = require("./routes/indexRouter");
-const catalogRouter = require("./routes/catalogRouter");
 const path = require("node:path");
 const assetsPath = path.join(__dirname, "public");
 
