@@ -15,8 +15,9 @@ const getByAuthors = asyncHandler(async (req, res) => {
 });
 
 const getByBranches = asyncHandler(async (req, res) => {
+    const { rows, columns } = await branchQueries.getBranches();
     // list of branches -> user clicks one
-    res.render("catalog", { catalogTitle: "Books by Branch"});
+    res.render("catalog", { catalogTitle: "Books by Branch", rows, columns});
 });
 
 const getByGenres = asyncHandler(async (req, res) => {
