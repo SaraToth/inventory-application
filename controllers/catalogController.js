@@ -4,17 +4,14 @@ const branchQueries = require("../db/queries/branches");
 const inventoryQueries = require("../db/queries/inventory");
 const asyncHandler = require("express-async-handler");
 
-
 const getByTitles = asyncHandler(async (req, res) => {
-    const { rows, columns } = await bookQueries.getBooksAlphaTitle();
-    
-    // Alphabetized list of books by their title
+    const { rows, columns } = await bookQueries.getBooks();
     res.render("catalog", { catalogTitle: "Books by Title", columns, rows});
 });
 
 const getByAuthors = asyncHandler(async (req, res) => {
-    // Alphabetized list of books by their author
-    res.render("catalog", { catalogTitle: "Books by Author"});
+    const { rows, columns} = await bookQueries.getBooks();
+    res.render("catalog", { catalogTitle: "Books by Author", columns, rows});
 });
 
 const getByBranches = asyncHandler(async (req, res) => {

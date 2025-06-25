@@ -1,17 +1,11 @@
 const pool = require("../pool");
 
-async function getAllBooks() {
-    const { rows } = await pool.query("SELECT * FROM books");
-    return rows;    
-};
-
-async function getBooksAlphaTitle() {
+async function getBooks() {
     const results = await pool.query("SELECT title, author FROM books");
     const rows = results.rows;
     const columns = results.fields.map(field => field.name);
-    return {rows, columns};
-}
-
+    return {columns, rows};
+};
 async function getBooksWithGenre() {
     const { rows } = await pool.query(
         "SELECT books.id, title, author, genres.genre FROM books INNER JOIN genres ON books.genre_id = genres.id"
@@ -33,4 +27,4 @@ async function insertBook(book) {
     await pool.query("INSERT INTO books (title, author, genre_id) VALUES ($1, $2, $3)", [book.title, book.author, genreId]);
 }
 
-module.exports = { getAllBooks, insertBook, getBooksWithGenre, getBooksAlphaTitle };
+module.exports = { getBooks, insertBook, getBooksWithGenre};
