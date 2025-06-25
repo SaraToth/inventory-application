@@ -25,4 +25,5 @@ const getAllBooksWithGenre = asyncHandler(async (req, res) => {
     res.render("home", { books: books });
 })
 
+
 module.exports = { getAllBooks, getAllBooksWithGenre };
