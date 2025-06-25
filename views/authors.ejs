@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= catalogTitle%></title>
+    <link rel="stylesheet" href="/navbar.css">
+</head>
+<body>
+    <%- include("partials/navbar")%>
+    <h1><%= catalogTitle%></h1>
+    <h2>Columns</h2>
+    <ul>
+        <% columns.forEach(column => {%>
+            <li><%=column%></li>
+        <%})%>
+    </ul>
+    <h2>Rows</h2>
+    <ul>
+        <% rows.forEach(row => {%>
+            <li><%=row.title%> <%=row.author%></li>
+        <%})%>
+    </ul>
+</body>
+</html>
