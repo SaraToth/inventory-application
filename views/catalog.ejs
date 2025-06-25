@@ -9,5 +9,17 @@
 <body>
     <%- include("partials/navbar")%>
     <h1><%= catalogTitle%></h1>
+    <h2>Columns</h2>
+    <ul>
+        <% columns.forEach(column => {%>
+            <li><%=column%></li>
+        <%})%>
+    </ul>
+    <h2>Rows</h2>
+    <ul>
+        <% rows.forEach(row => {%>
+            <li><%=row.title%> <%=row.author%></li>
+        <%})%>
+    </ul>
 </body>
 </html>
