@@ -27,5 +27,8 @@ const getByGenres = asyncHandler(async (req, res) => {
     res.render("genres", { catalogTitle: "Books by Genre", rows, columns});
 });
 
+const getBranchForm = (req, res) => {
+    res.render("branchForm");
+};
 
-module.exports = { getHome, getByTitles, getByAuthors, getByBranches, getByGenres };
+module.exports = { getHome, getByTitles, getByAuthors, getByBranches, getByGenres, getBranchForm };
