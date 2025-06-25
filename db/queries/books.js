@@ -6,6 +6,14 @@ async function getBooks() {
     const columns = results.fields.map(field => field.name);
     return {columns, rows};
 };
+
+
+
+
+
+
+
+
 async function getBooksWithGenre() {
     const { rows } = await pool.query(
         "SELECT books.id, title, author, genres.genre FROM books INNER JOIN genres ON books.genre_id = genres.id"
