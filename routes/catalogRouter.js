@@ -1,20 +1,14 @@
 const { Router } = require("express");
 const catalogRouter = Router();
+const { getByTitles, getByAuthors, getByBranches, getByGenres } = require("../controllers/catalogController");
 
-catalogRouter.get("/title", (req, res) => {
-    res.render("catalog", { catalogTitle: "Books by Title"});
-});
 
-catalogRouter.get("/author", (req, res) => {
-    res.render("catalog", { catalogTitle: "Books by Author"});
-});
+catalogRouter.get("/title", getByTitles);
 
-catalogRouter.get("/branch", (req, res) => {
-    res.render("catalog", { catalogTitle: "Books by Branch"});
-});
+catalogRouter.get("/author", getByAuthors);
 
-catalogRouter.get("/genre", (req, res) => {
-    res.render("catalog", { catalogTitle: "Books by Genre"});
-});
+catalogRouter.get("/branch", getByBranches);
+
+catalogRouter.get("/genre", getByGenres);
 
 module.exports = catalogRouter;
