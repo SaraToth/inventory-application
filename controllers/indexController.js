@@ -1,7 +1,4 @@
 const bookQueries = require("../db/queries/books");
-const genreQueries = require("../db/queries/genres");
-const branchQueries = require("../db/queries/branches");
-const inventoryQueries = require("../db/queries/inventory");
 const asyncHandler = require("express-async-handler");
 
 const getHome = (req, res) => {
@@ -19,13 +16,13 @@ const getByAuthors = asyncHandler(async (req, res) => {
 });
 
 const getByBranches = asyncHandler(async (req, res) => {
-    const { rows, columns } = await branchQueries.getBranches();
+    const { rows, columns } = await bookQueries.getBranches();
     // list of branches -> user clicks one
     res.render("branches", { catalogTitle: "Books by Branch", rows, columns});
 });
 
 const getByGenres = asyncHandler(async (req, res) => {
-    const { rows, columns } = await genreQueries.getGenres();
+    const { rows, columns } = await bookQueries.getGenres();
     // list of genres -> user clicks one
     res.render("genres", { catalogTitle: "Books by Genre", rows, columns});
 });

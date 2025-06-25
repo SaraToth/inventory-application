@@ -7,32 +7,19 @@ async function getBooks() {
     return {columns, rows};
 };
 
-
-
-
-
-
-
-
-async function getBooksWithGenre() {
-    const { rows } = await pool.query(
-        "SELECT books.id, title, author, genres.genre FROM books INNER JOIN genres ON books.genre_id = genres.id"
-    );
-    return rows;
+async function getBranches() {
+    const results = await pool.query("SELECT name FROM branches ORDER BY name");
+    const rows = results.rows;
+    const columns = results.fields.map(field => field.name);
+    return { rows, columns};
 }
 
-//book is an object of all book info
-async function insertBook(book) {
-    // Look up the genre Id
-    const genreResult = await pool.query("SELECT id FROM genre WHERE genre=$1", [book.genre]);
-    const genreId = genreResult.rows[0]?.id;
-
-    if (!genreId) {
-        throw new Error(`Genre ${book.genre} does not exist`);
-    }
-
-    // Add the book to db
-    await pool.query("INSERT INTO books (title, author, genre_id) VALUES ($1, $2, $3)", [book.title, book.author, genreId]);
+async function getGenres() {
+    const results = await pool.query("SELECT genre FROM genres ORDER BY genre");
+    const rows = results.rows;
+    const columns = results.fields.map(field => field.name);
+    return { rows, columns};
 }
 
-module.exports = { getBooks, insertBook, getBooksWithGenre};
+
+module.exports = { getBooks, getBranches, getGenres };
